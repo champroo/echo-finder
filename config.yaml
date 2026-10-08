@@ -1,0 +1,52 @@
+# Where to search. Each area is a city name the API understands.
+areas:
+  - "Irvine, CA"
+  - "Huntington Beach, CA"
+  - "Costa Mesa, CA"
+  - "Anaheim, CA"
+  - "Santa Ana, CA"
+  - "Fountain Valley, CA"
+  - "Newport Beach, CA"
+
+# What kinds of food businesses to look for.
+categories:
+  - restaurant
+  - cafe
+  - bakery
+  - food truck
+  - caterer
+
+# Max pages per search (each page = up to 20 results, Google caps at 3 pages).
+# Keep this at 1 while testing to save API usage.
+max_pages_per_search: 1
+
+# Scoring rules. Tune these numbers with the sales team.
+scoring:
+  future_opening: 3           # Google lists it as "opening soon"
+  likely_new: 2               # very few reviews, probably opened recently
+  likely_new_max_reviews: 20
+  no_website: 2               # no website listed on Google
+  hidden_gem: 2               # good rating but few reviews
+  hidden_gem_min_rating: 4.2
+  hidden_gem_max_reviews: 100
+  multiple_locations: 2       # same name found at 2+ addresses
+  low_rating_penalty: -2      # rating below this is a tough sell
+  low_rating_threshold: 3.5
+  chain_penalty: -5           # national chains have in-house marketing
+
+# Known chains to push to the bottom of the list (case-insensitive, partial match).
+chains:
+  - starbucks
+  - mcdonald
+  - subway
+  - chipotle
+  - panera
+  - dunkin
+  - taco bell
+  - domino
+  - pizza hut
+  - panda express
+  - in-n-out
+  - jack in the box
+  - peet's coffee
+  - wingstop
