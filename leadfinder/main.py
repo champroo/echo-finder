@@ -68,7 +68,8 @@ def main():
 
     leads = scoring.score_all(db.all_places(conn), config["scoring"], config["chains"])
     leads = [l for l in leads if l["status"] != "CLOSED_PERMANENTLY"]
-
+    leads = [l for l in leads if l["score"] >= config["min_score"]]
+    
     out = ROOT / "leads.csv"
     export_csv(leads, out)
     print(f"Wrote {len(leads)} scored leads to {out.name}\n")

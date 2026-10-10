@@ -34,7 +34,6 @@ scoring:
   low_rating_threshold: 3.5
   chain_penalty: -5           # national chains have in-house marketing
 
-
 # Known chains to push to the bottom of the list (case-insensitive, partial match).
 chains:
   - starbucks
@@ -51,3 +50,5 @@ chains:
   - jack in the box
   - peet's coffee
   - wingstop
+
+min_score: 1
