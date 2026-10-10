@@ -19,7 +19,7 @@ FIELD_MASK = ",".join([
 
 
 class PlacesAPIError(Exception):
-
+    """Raised when Google returns an error we can't recover from."""
 
 def _post_with_retry(body, api_key, max_retries=3):
     headers = {

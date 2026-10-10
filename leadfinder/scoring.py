@@ -26,6 +26,10 @@ def score_place(place, rules, chains, location_count=1):
     reasons = []
     rating = place.get("rating")
     reviews = place.get("review_count") or 0
+    
+    if place.get("category") == "bakery":
+        score += rules["bakery_bonus"]
+        reasons.append("is a bakery!")
 
     if is_chain(place["name"], chains):
         return rules["chain_penalty"], ["national chain"]

@@ -33,6 +33,7 @@ scoring:
   low_rating_penalty: -2      # rating below this is a tough sell
   low_rating_threshold: 3.5
   chain_penalty: -5           # national chains have in-house marketing
+  bakery_bonus: 1
 
 # Known chains to push to the bottom of the list (case-insensitive, partial match).
 chains:

@@ -7,6 +7,7 @@ RULES = {
     "no_website": 2, "hidden_gem": 2, "hidden_gem_min_rating": 4.2,
     "hidden_gem_max_reviews": 100, "multiple_locations": 2,
     "low_rating_penalty": -2, "low_rating_threshold": 3.5, "chain_penalty": -5,
+    "bakery_bonus": 1,
 }
 CHAINS = ["starbucks", "subway"]
 
@@ -81,3 +82,11 @@ def test_score_all_detects_multiple_locations_and_sorts():
     leads = score_all(places, RULES, CHAINS)
     assert leads[0]["score"] == 2 and "2 locations" in leads[0]["reasons"]
     assert leads[-1]["name"] == "Plain Cafe"
+
+def test_bakery_bonus():
+    score, _ = score_place(make_place(category="bakery"), RULES, CHAINS)
+    assert score == 1
+
+def test_non_bakery_gets_no_bonus():
+    score, _ = score_place(make_place(category="cafe"), RULES, CHAINS)
+    assert score == 0
